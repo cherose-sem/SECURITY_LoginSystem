@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>SECURITY LOGIN SYSTEM</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
+    </head>
+    <body>
+        <div class="page-header">
+            <h1>SECURITY LOGIN SYSTEM</h1>
+        </div>
+        <div class="well well-sm" align="center">
+            <h2><a href="login.jsp">Login</a><br><br></h2>
+            <h2><a href="register.jsp">Register</a></h2>
+        </div>
+
+        <form class="navbar-form navbar-center" name = "logInForm" action="MyServlet" method="POST">
+            <div class="form-group">
+                <h3>XSS Sample</h3>
+                <div>Search:</div>
+                <input type="text" style="width:10em;" class="form-control" name="name" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-md">Search</button>
+            <input type="hidden" name="do_this" value="search" />
+
+        </form>
+
+        <table>
+    <c:forEach var="user" items="${users}">
+        <tr>
+            <td><c:out value="${user.uname}"/></td>
+            <td><c:out value="${user.pwd}"/></td>
+        </tr> 
+    </c:forEach>
+</table>
+
+        <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    </body>
+</html>
